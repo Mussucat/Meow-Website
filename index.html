@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub - Online Learning Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>LearnHub</h1>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlock Your Potential with Expert-Led Courses</h1>
+                <p>Learn coding, languages, drawing, and more at your own pace</p>
+                <div class="promo-badge">
+                    <span>Special Offer: 20% OFF on all courses</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="courses.html" class="btn btn-primary">Explore Courses</a>
+                    <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-image.svg" alt="Online learning illustration">
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Courses</h2>
+                <p>Discover our most popular learning opportunities</p>
+            </div>
+            <div class="courses-grid">
+                <!-- Course Card 1 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="images/course-coding.svg" alt="Basic Coding Course">
+                        <div class="course-category">Coding</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Web Development Fundamentals</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 12 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Learn HTML, CSS, and JavaScript to build responsive websites from scratch.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹4,999</span>
+                            <span class="discounted-price">₹3,999</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=web-dev" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course Card 2 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="images/course-language.svg" alt="Language Course">
+                        <div class="course-category">Language</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Conversational Spanish</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 8 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Master everyday Spanish conversations with native speakers and practical exercises.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹3,499</span>
+                            <span class="discounted-price">₹2,799</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=spanish" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course Card 3 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="images/course-art.svg" alt="Digital Art Course">
+                        <div class="course-category">Art</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Digital Illustration Masterclass</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 10 weeks</span>
+                            <span><i class="fas fa-user"></i> Intermediate</span>
+                        </div>
+                        <p>Create stunning digital illustrations using professional techniques and tools.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹5,499</span>
+                            <span class="discounted-price">₹4,399</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=digital-art" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all">
+                <a href="courses.html" class="btn btn-outline">View All Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How LearnHub Works</h2>
+                <p>Simple steps to start your learning journey</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>1. Browse Courses</h3>
+                    <p>Explore our wide range of courses across different categories.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>2. Simple Payment</h3>
+                    <p>Pay easily with UPI, Google Pay, or Paytm with our secure payment system.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>3. Start Learning</h3>
+                    <p>Get immediate access to course videos and materials after purchase.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>4. Earn Certificate</h3>
+                    <p>Complete your course and receive a certificate of completion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="payment-methods">
+        <div class="container">
+            <div class="section-header">
+                <h2>Easy Payment Options</h2>
+                <p>We support popular Indian payment methods for your convenience</p>
+            </div>
+            <div class="payment-options">
+                <div class="payment-option">
+                    <img src="images/upi.svg" alt="UPI">
+                    <h3>UPI</h3>
+                </div>
+                <div class="payment-option">
+                    <img src="images/gpay.svg" alt="Google Pay">
+                    <h3>Google Pay</h3>
+                </div>
+                <div class="payment-option">
+                    <img src="images/paytm.svg" alt="Paytm">
+                    <h3>Paytm</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Students Say</h2>
+                <p>Success stories from our learning community</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The web development course was exactly what I needed to kickstart my career in tech. The instructor was knowledgeable and the content was comprehensive yet easy to follow."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial-1.svg" alt="Priya Sharma">
+                        <div>
+                            <h4>Priya Sharma</h4>
+                            <p>Web Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"I've tried many platforms to learn Spanish, but LearnHub's approach was the most effective. The conversational focus helped me become confident in speaking much faster."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial-2.svg" alt="Raj Patel">
+                        <div>
+                            <h4>Raj Patel</h4>
+                            <p>Language Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The digital art course transformed my hobby into a freelance career. The techniques I learned are industry-standard and the feedback from the instructor was invaluable."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial-3.svg" alt="Ananya Desai">
+                        <div>
+                            <h4>Ananya Desai</h4>
+                            <p>Digital Artist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="become-instructor">
+        <div class="container">
+            <div class="instructor-content">
+                <h2>Become an Instructor</h2>
+                <p>Share your knowledge and expertise with students worldwide. Create courses and earn revenue from each enrollment.</p>
+                <a href="become-instructor.html" class="btn btn-primary">Start Teaching Today</a>
+            </div>
+            <div class="instructor-image">
+                <img src="images/instructor.svg" alt="Become an instructor">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>LearnHub</h2>
+                    <p>Empowering learners worldwide</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-categories">
+                    <h3>Course Categories</h3>
+                    <ul>
+                        <li><a href="courses.html?category=coding">Coding</a></li>
+                        <li><a href="courses.html?category=languages">Languages</a></li>
+                        <li><a href="courses.html?category=drawing">Drawing</a></li>
+                        <li><a href="courses.html?category=art">Art</a></li>
+                        <li><a href="courses.html?category=business">Business</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Get the theme toggle button
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved user preference, if any
+        const userPrefersDark = localStorage.getItem('theme') === 'dark';
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Set the initial theme based on user preference or system preference
+        if (userPrefersDark || (!localStorage.getItem('theme') && prefersDarkScheme.matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        // Function to toggle between dark and light mode
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = 'light';
+            
+            if (currentTheme === 'light') {
+                targetTheme = 'dark';
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+            
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+        }
+        
+        // Event listener for theme toggle button
+        themeToggle.addEventListener('click', toggleTheme);
+    </script>
+</body>
+</html> 

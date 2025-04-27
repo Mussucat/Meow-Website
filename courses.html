@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Courses - LearnHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .courses-header {
+            background-color: #f3f4f6;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .courses-header h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .course-filters {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .category-filter {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-filter:hover, .category-filter.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+        
+        .courses-container {
+            padding: 60px 0;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 60px;
+        }
+        
+        .pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination-item:hover, .pagination-item.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>LearnHub</h1>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html" class="active">Courses</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="courses-header">
+        <div class="container">
+            <h1>Explore Our Courses</h1>
+            <p>Discover top-quality courses designed to help you master new skills</p>
+            <div class="promo-badge">
+                <span>Special Offer: 20% OFF on all courses</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="course-filters">
+        <div class="container">
+            <button class="category-filter active" data-category="all">All Courses</button>
+            <button class="category-filter" data-category="coding">Coding</button>
+            <button class="category-filter" data-category="languages">Languages</button>
+            <button class="category-filter" data-category="drawing">Drawing</button>
+            <button class="category-filter" data-category="art">Art</button>
+            <button class="category-filter" data-category="business">Business</button>
+        </div>
+    </section>
+
+    <section class="courses-container">
+        <div class="container">
+            <div class="courses-grid">
+                <!-- Course Card 1 -->
+                <div class="course-card" data-category="coding">
+                    <div class="course-image">
+                        <img src="images/course-coding.jpg" alt="Web Development Course">
+                        <div class="course-category">Coding</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Web Development Fundamentals</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 12 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Learn HTML, CSS, and JavaScript to build responsive websites from scratch.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹4,999</span>
+                            <span class="discounted-price">₹3,999</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=web-dev" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card" data-category="languages">
+                    <div class="course-image">
+                        <img src="images/course-language.jpg" alt="Spanish Language Course">
+                        <div class="course-category">Language</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Conversational Spanish</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 8 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Master everyday Spanish conversations with native speakers and practical exercises.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹3,499</span>
+                            <span class="discounted-price">₹2,799</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=spanish" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card" data-category="art">
+                    <div class="course-image">
+                        <img src="images/course-art.jpg" alt="Digital Art Course">
+                        <div class="course-category">Art</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Digital Illustration Masterclass</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 10 weeks</span>
+                            <span><i class="fas fa-user"></i> Intermediate</span>
+                        </div>
+                        <p>Create stunning digital illustrations using professional techniques and tools.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹5,499</span>
+                            <span class="discounted-price">₹4,399</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=digital-art" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card" data-category="coding">
+                    <div class="course-image">
+                        <img src="images/course-python.jpg" alt="Python Programming Course">
+                        <div class="course-category">Coding</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Python for Data Science</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 14 weeks</span>
+                            <span><i class="fas fa-user"></i> Intermediate</span>
+                        </div>
+                        <p>Learn Python programming for data analysis, visualization, and machine learning.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹6,999</span>
+                            <span class="discounted-price">₹5,599</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=python-data" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card" data-category="drawing">
+                    <div class="course-image">
+                        <img src="images/course-drawing.jpg" alt="Pencil Drawing Course">
+                        <div class="course-category">Drawing</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Pencil Drawing Techniques</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 6 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Master fundamental drawing techniques with pencil from basic shapes to detailed portraits.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹2,999</span>
+                            <span class="discounted-price">₹2,399</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=pencil-drawing" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card" data-category="languages">
+                    <div class="course-image">
+                        <img src="images/course-french.jpg" alt="French Language Course">
+                        <div class="course-category">Language</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>French for Beginners</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 10 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Learn French from scratch with a focus on practical conversation and pronunciation.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹3,999</span>
+                            <span class="discounted-price">₹3,199</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=french" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 7 -->
+                <div class="course-card" data-category="business">
+                    <div class="course-image">
+                        <img src="images/course-business.jpg" alt="Digital Marketing Course">
+                        <div class="course-category">Business</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Digital Marketing Essentials</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 8 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Master SEO, social media marketing, email campaigns, and content marketing strategies.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹4,499</span>
+                            <span class="discounted-price">₹3,599</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=digital-marketing" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 8 -->
+                <div class="course-card" data-category="art">
+                    <div class="course-image">
+                        <img src="images/course-photography.jpg" alt="Photography Course">
+                        <div class="course-category">Art</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Photography Fundamentals</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 6 weeks</span>
+                            <span><i class="fas fa-user"></i> Beginner</span>
+                        </div>
+                        <p>Learn photography basics, composition, lighting, and editing to capture stunning images.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹3,999</span>
+                            <span class="discounted-price">₹3,199</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=photography" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+
+                <!-- Course Card 9 -->
+                <div class="course-card" data-category="coding">
+                    <div class="course-image">
+                        <img src="images/course-mobile-dev.jpg" alt="Mobile App Development Course">
+                        <div class="course-category">Coding</div>
+                    </div>
+                    <div class="course-content">
+                        <h3>Mobile App Development</h3>
+                        <div class="course-info">
+                            <span><i class="fas fa-clock"></i> 14 weeks</span>
+                            <span><i class="fas fa-user"></i> Intermediate</span>
+                        </div>
+                        <p>Build cross-platform mobile apps using React Native for iOS and Android devices.</p>
+                        <div class="course-price">
+                            <span class="original-price">₹7,999</span>
+                            <span class="discounted-price">₹6,399</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        <a href="course-details.html?id=mobile-dev" class="btn btn-buy">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="pagination-item active">1</a>
+                <a href="#" class="pagination-item">2</a>
+                <a href="#" class="pagination-item">3</a>
+                <a href="#" class="pagination-item"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>LearnHub</h2>
+                    <p>Empowering learners worldwide</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-categories">
+                    <h3>Course Categories</h3>
+                    <ul>
+                        <li><a href="courses.html?category=coding">Coding</a></li>
+                        <li><a href="courses.html?category=languages">Languages</a></li>
+                        <li><a href="courses.html?category=drawing">Drawing</a></li>
+                        <li><a href="courses.html?category=art">Art</a></li>
+                        <li><a href="courses.html?category=business">Business</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Course category filtering
+        const categoryFilters = document.querySelectorAll('.category-filter');
+        const courseCards = document.querySelectorAll('.course-card');
+        
+        categoryFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Remove active class from all filters
+                categoryFilters.forEach(f => f.classList.remove('active'));
+                
+                // Add active class to clicked filter
+                filter.classList.add('active');
+                
+                const category = filter.dataset.category;
+                
+                // Filter courses
+                courseCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

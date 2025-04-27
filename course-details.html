@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - LearnHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .course-header {
+            background-color: #f3f4f6;
+            padding: 60px 0;
+        }
+        
+        .course-header-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .course-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .course-subtitle {
+            font-size: 18px;
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+        
+        .course-meta {
+            display: flex;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .course-meta-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .course-meta-item i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+        
+        .course-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .course-price-card {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .course-price {
+            margin-bottom: 20px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--gray-color);
+            font-size: 18px;
+        }
+        
+        .discounted-price {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-right: 10px;
+        }
+        
+        .discount-badge {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--success-color);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .course-includes {
+            margin-bottom: 20px;
+        }
+        
+        .course-includes h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .course-includes ul {
+            list-style: none;
+        }
+        
+        .course-includes li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .course-includes li i {
+            color: var(--success-color);
+            margin-right: 10px;
+        }
+        
+        .buy-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .buy-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .buy-btn i {
+            margin-right: 8px;
+        }
+        
+        .course-content {
+            padding: 80px 0;
+        }
+        
+        .course-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+        }
+        
+        .course-tab {
+            padding: 15px 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .course-tab.active {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .course-description h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .course-description p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .curriculum-section {
+            margin-bottom: 30px;
+        }
+        
+        .curriculum-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .curriculum-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f9fafb;
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+        }
+        
+        .curriculum-item-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .curriculum-item i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+        
+        .curriculum-item-right {
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+        
+        .instructor-section {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        
+        .instructor-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 30px;
+            flex-shrink: 0;
+        }
+        
+        .instructor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .instructor-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .instructor-info p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .reviews-summary {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .reviews-average {
+            font-size: 64px;
+            font-weight: 600;
+            margin-right: 30px;
+        }
+        
+        .reviews-stars {
+            display: flex;
+            margin-bottom: 8px;
+        }
+        
+        .reviews-stars i {
+            color: #f59e0b;
+            margin-right: 5px;
+        }
+        
+        .reviews-count {
+            color: var(--gray-color);
+        }
+        
+        .review-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .review-author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .review-author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .review-date {
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+        
+        .review-rating {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .review-rating i {
+            color: #f59e0b;
+            margin-right: 3px;
+        }
+        
+        .review-content p {
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 992px) {
+            .course-header-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .course-image {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            
+            .course-header-text {
+                order: 2;
+            }
+            
+            .course-price-card {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>LearnHub</h1>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html" class="active">Courses</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="course-header">
+        <div class="container">
+            <div class="course-header-content">
+                <div class="course-header-text">
+                    <h1 class="course-title">Web Development Fundamentals</h1>
+                    <p class="course-subtitle">Learn HTML, CSS, and JavaScript to build responsive websites from scratch</p>
+                    
+                    <div class="course-meta">
+                        <div class="course-meta-item">
+                            <i class="fas fa-star"></i>
+                            <span>4.8 (120 reviews)</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>1,245 students</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>12 weeks</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <i class="fas fa-signal"></i>
+                            <span>Beginner Level</span>
+                        </div>
+                        <div class="course-meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Last updated: April 2023</span>
+                        </div>
+                    </div>
+                    
+                    <p>A comprehensive course to learn web development from the ground up. Perfect for beginners with no prior coding experience.</p>
+                </div>
+                
+                <div class="course-image">
+                    <img src="images/course-coding.jpg" alt="Web Development Course">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="course-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <div class="course-tabs">
+                        <div class="course-tab active" data-tab="overview">Overview</div>
+                        <div class="course-tab" data-tab="curriculum">Curriculum</div>
+                        <div class="course-tab" data-tab="instructor">Instructor</div>
+                        <div class="course-tab" data-tab="reviews">Reviews</div>
+                    </div>
+                    
+                    <div class="tab-content active" id="overview">
+                        <div class="course-description">
+                            <h3>About This Course</h3>
+                            <p>This comprehensive web development course is designed to take you from beginner to job-ready developer in just 12 weeks. You'll learn the core technologies that power the web: HTML, CSS, and JavaScript.</p>
+                            
+                            <p>Starting with the fundamentals, you'll build a strong foundation in HTML structure and CSS styling. Then you'll dive into JavaScript programming to add interactivity to your websites. By the end of the course, you'll have built several real-world projects including a personal portfolio website, a responsive landing page, and an interactive web application.</p>
+                            
+                            <h3>What You'll Learn</h3>
+                            <ul>
+                                <li>HTML5 structure, semantic elements, and best practices</li>
+                                <li>CSS3 styling, flexbox, grid layout, and animations</li>
+                                <li>JavaScript fundamentals, DOM manipulation, and event handling</li>
+                                <li>Responsive web design for mobile, tablet, and desktop devices</li>
+                                <li>Working with APIs to fetch and display data</li>
+                                <li>Version control with Git and GitHub</li>
+                                <li>Web performance optimization techniques</li>
+                                <li>Deploying websites to production</li>
+                            </ul>
+                            
+                            <h3>Requirements</h3>
+                            <ul>
+                                <li>A computer (Windows, Mac, or Linux) with internet access</li>
+                                <li>No prior coding experience required - we'll teach you everything from scratch</li>
+                                <li>Enthusiasm to learn and willingness to practice regularly</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="curriculum">
+                        <div class="curriculum-section">
+                            <h3>Module 1: HTML Foundations (Week 1-2)</h3>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Introduction to Web Development</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>45 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>HTML Document Structure</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>1h 10 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>HTML Elements and Attributes</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>1h 30 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Semantic HTML and Accessibility</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>2h</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="curriculum-section">
+                            <h3>Module 2: CSS Styling (Week 3-5)</h3>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>CSS Selectors and Properties</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>1h 15 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Box Model and Layout</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>1h 45 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Flexbox and Grid Layout</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>2h 30 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Responsive Design and Media Queries</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>2h</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="curriculum-section">
+                            <h3>Module 3: JavaScript Fundamentals (Week 6-9)</h3>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>JavaScript Syntax and Variables</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>1h 30 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Functions, Arrays, and Objects</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>2h</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>DOM Manipulation</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>2h 15 min</span>
+                                </div>
+                            </div>
+                            <div class="curriculum-item">
+                                <div class="curriculum-item-left">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Event Handling and Form Validation</span>
+                                </div>
+                                <div class="curriculum-item-right">
+                                    <span>1h 45 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="instructor">
+                        <div class="instructor-section">
+                            <div class="instructor-image">
+                                <img src="images/instructor-1.jpg" alt="Instructor - Rajiv Sharma">
+                            </div>
+                            <div class="instructor-info">
+                                <h3>Rajiv Sharma</h3>
+                                <p>Senior Web Developer & Educator with 10+ years experience</p>
+                                <p>Rajiv has worked with multiple Fortune 500 companies as a web development consultant and has been teaching coding for over 5 years. His students have gone on to work at companies like Google, Microsoft, and Amazon.</p>
+                                <p>Specializing in frontend development, Rajiv brings real-world examples and practical challenges to make learning web development engaging and relevant to today's job market.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="reviews">
+                        <div class="reviews-summary">
+                            <div class="reviews-average">4.8</div>
+                            <div class="reviews-info">
+                                <div class="reviews-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="reviews-count">Based on 120 reviews</div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="review-author-image">
+                                    <img src="images/user-1.jpg" alt="Priya Patel">
+                                </div>
+                                <div class="review-author-info">
+                                    <h4>Priya Patel</h4>
+                                    <div class="review-date">Posted 2 months ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-content">
+                                <p>This course has been transformative for my career. I had no coding experience before, but the step-by-step approach made it easy to follow along. The projects were challenging but achievable. Within a month of completing the course, I landed my first junior developer role!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="review-author-image">
+                                    <img src="images/user-2.jpg" alt="Amit Singh">
+                                </div>
+                                <div class="review-author-info">
+                                    <h4>Amit Singh</h4>
+                                    <div class="review-date">Posted 1 month ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="review-content">
+                                <p>The curriculum is well-structured and comprehensive. I especially appreciated the practical projects that reinforced the concepts. My only suggestion would be to add more exercises for JavaScript as it's the most challenging part. Rajiv is an excellent teacher who explains complex topics in an easy-to-understand way.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-4">
+                    <div class="course-price-card">
+                        <div class="course-price">
+                            <span class="discounted-price">₹3,999</span>
+                            <span class="original-price">₹4,999</span>
+                            <span class="discount-badge">20% OFF</span>
+                        </div>
+                        
+                        <div class="course-includes">
+                            <h3>This course includes:</h3>
+                            <ul>
+                                <li><i class="fas fa-video"></i> 40+ hours of video content</li>
+                                <li><i class="fas fa-file"></i> 25 downloadable resources</li>
+                                <li><i class="fas fa-code"></i> 15 coding exercises</li>
+                                <li><i class="fas fa-project-diagram"></i> 5 complete projects</li>
+                                <li><i class="fas fa-certificate"></i> Certificate of completion</li>
+                                <li><i class="fas fa-infinity"></i> Lifetime access</li>
+                                <li><i class="fas fa-mobile-alt"></i> Access on mobile and TV</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="#" class="buy-btn" id="buy-course-btn"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>LearnHub</h2>
+                    <p>Empowering learners worldwide</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-categories">
+                    <h3>Course Categories</h3>
+                    <ul>
+                        <li><a href="courses.html?category=coding">Coding</a></li>
+                        <li><a href="courses.html?category=languages">Languages</a></li>
+                        <li><a href="courses.html?category=drawing">Drawing</a></li>
+                        <li><a href="courses.html?category=art">Art</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Tab Functionality
+        const tabs = document.querySelectorAll('.course-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Show the corresponding tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Buy Course Button
+        const buyButton = document.getElementById('buy-course-btn');
+        
+        buyButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Get course information
+            const courseTitle = document.querySelector('.course-title').textContent;
+            const coursePrice = document.querySelector('.discounted-price').textContent;
+            
+            // Store course info in localStorage for the checkout page
+            localStorage.setItem('selectedCourse', JSON.stringify({
+                title: courseTitle,
+                price: coursePrice,
+                id: 'web-dev'
+            }));
+            
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        });
+    </script>
+</body>
+</html> 

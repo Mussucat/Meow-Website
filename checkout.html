@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - LearnHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .checkout-container {
+            padding: 60px 0;
+            background-color: #f9fafb;
+            min-height: calc(100vh - 130px);
+        }
+        
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .checkout-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .checkout-header p {
+            color: var(--gray-color);
+        }
+        
+        .checkout-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .checkout-summary {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+        }
+        
+        .checkout-summary h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .checkout-course-info {
+            margin-bottom: 30px;
+        }
+        
+        .checkout-course-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .checkout-price-summary {
+            margin-bottom: 30px;
+        }
+        
+        .checkout-price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .checkout-price-row.total {
+            font-weight: 600;
+            font-size: 18px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        .discount {
+            color: var(--success-color);
+        }
+        
+        .promo-code {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .promo-code input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-family: inherit;
+        }
+        
+        .promo-code button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+        }
+        
+        .payment-methods {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+        }
+        
+        .payment-methods h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .payment-options {
+            margin-bottom: 30px;
+        }
+        
+        .payment-method-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method-option:hover,
+        .payment-method-option.active {
+            border-color: var(--primary-color);
+            background-color: rgba(79, 70, 229, 0.05);
+        }
+        
+        .payment-method-option img {
+            width: 40px;
+            margin-right: 15px;
+        }
+        
+        .payment-method-option .payment-method-name {
+            font-weight: 500;
+        }
+        
+        .payment-details {
+            display: none;
+            margin-bottom: 30px;
+        }
+        
+        .payment-details.active {
+            display: block;
+        }
+        
+        .payment-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .payment-qr img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+        
+        .payment-id {
+            background-color: #f3f4f6;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+            user-select: all;
+        }
+        
+        .payment-instructions {
+            background-color: #f3f4f6;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+        
+        .payment-instructions h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .payment-instructions ol {
+            padding-left: 20px;
+        }
+        
+        .payment-instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .complete-payment-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .complete-payment-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkout-summary {
+                order: 1;
+            }
+            
+            .payment-methods {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>LearnHub</h1>
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">Login</a>
+                    <a href="signup.html" class="btn btn-signup">Sign Up</a>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="checkout-container">
+        <div class="container">
+            <div class="checkout-header">
+                <h1>Checkout</h1>
+                <p>Complete your purchase to get immediate access to the course</p>
+            </div>
+            
+            <div class="checkout-content">
+                <div class="checkout-summary">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="checkout-course-info">
+                        <h3 class="checkout-course-title">Web Development Fundamentals</h3>
+                        <p>Learn HTML, CSS, and JavaScript to build responsive websites from scratch.</p>
+                    </div>
+                    
+                    <div class="checkout-price-summary">
+                        <div class="checkout-price-row">
+                            <span>Original Price:</span>
+                            <span>₹4,999</span>
+                        </div>
+                        <div class="checkout-price-row">
+                            <span>Discount (20%):</span>
+                            <span class="discount">-₹1,000</span>
+                        </div>
+                        <div class="checkout-price-row total">
+                            <span>Total:</span>
+                            <span class="checkout-course-price">₹3,999</span>
+                        </div>
+                    </div>
+                    
+                    <div class="promo-code">
+                        <input type="text" placeholder="Promo Code">
+                        <button>Apply</button>
+                    </div>
+                    
+                    <div class="secure-checkout">
+                        <p><i class="fas fa-lock"></i> Secure Checkout</p>
+                        <p>Your payment information is encrypted and secured</p>
+                    </div>
+                </div>
+                
+                <div class="payment-methods">
+                    <h2>Payment Method</h2>
+                    
+                    <div class="payment-options">
+                        <div class="payment-method-option active" data-method="upi">
+                            <img src="images/upi.png" alt="UPI">
+                            <span class="payment-method-name">UPI</span>
+                        </div>
+                        <div class="payment-method-option" data-method="gpay">
+                            <img src="images/gpay.png" alt="Google Pay">
+                            <span class="payment-method-name">Google Pay</span>
+                        </div>
+                        <div class="payment-method-option" data-method="paytm">
+                            <img src="images/paytm.png" alt="Paytm">
+                            <span class="payment-method-name">Paytm</span>
+                        </div>
+                    </div>
+                    
+                    <!-- UPI Payment Details -->
+                    <div class="payment-details active" data-method="upi">
+                        <div class="payment-qr">
+                            <img src="images/upi-qr.png" alt="UPI QR Code">
+                            <p>Scan this QR code with any UPI app</p>
+                        </div>
+                        
+                        <div class="payment-id">
+                            <p>UPI ID: learnhub@ybl</p>
+                        </div>
+                        
+                        <div class="payment-instructions">
+                            <h3>How to pay using UPI:</h3>
+                            <ol>
+                                <li>Open any UPI app (Google Pay, PhonePe, BHIM, etc.)</li>
+                                <li>Select "Scan QR Code" or "Pay"</li>
+                                <li>Scan the QR code above or enter the UPI ID manually</li>
+                                <li>Enter the amount: ₹3,999</li>
+                                <li>Complete the payment using your UPI PIN</li>
+                                <li>Click "Complete Purchase" below after payment</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Pay Payment Details -->
+                    <div class="payment-details" data-method="gpay">
+                        <div class="payment-qr">
+                            <img src="images/gpay-qr.png" alt="Google Pay QR Code">
+                            <p>Scan this QR code with Google Pay</p>
+                        </div>
+                        
+                        <div class="payment-id">
+                            <p>Google Pay ID: learnhub@gpay</p>
+                        </div>
+                        
+                        <div class="payment-instructions">
+                            <h3>How to pay using Google Pay:</h3>
+                            <ol>
+                                <li>Open the Google Pay app</li>
+                                <li>Tap on "Scan QR"</li>
+                                <li>Scan the QR code above</li>
+                                <li>Enter the amount: ₹3,999</li>
+                                <li>Add a note: "Course Purchase - [Your Name]"</li>
+                                <li>Complete the payment using your UPI PIN</li>
+                                <li>Click "Complete Purchase" below after payment</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <!-- Paytm Payment Details -->
+                    <div class="payment-details" data-method="paytm">
+                        <div class="payment-qr">
+                            <img src="images/paytm-qr.png" alt="Paytm QR Code">
+                            <p>Scan this QR code with Paytm</p>
+                        </div>
+                        
+                        <div class="payment-id">
+                            <p>Paytm Number: 9876543210</p>
+                        </div>
+                        
+                        <div class="payment-instructions">
+                            <h3>How to pay using Paytm:</h3>
+                            <ol>
+                                <li>Open the Paytm app</li>
+                                <li>Tap on "Scan QR"</li>
+                                <li>Scan the QR code above or pay to the number</li>
+                                <li>Enter the amount: ₹3,999</li>
+                                <li>Add a note: "Course Purchase - [Your Name]"</li>
+                                <li>Complete the payment</li>
+                                <li>Click "Complete Purchase" below after payment</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <button class="complete-payment-btn">Complete Purchase</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>LearnHub</h2>
+                    <p>Empowering learners worldwide</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-categories">
+                    <h3>Course Categories</h3>
+                    <ul>
+                        <li><a href="courses.html?category=coding">Coding</a></li>
+                        <li><a href="courses.html?category=languages">Languages</a></li>
+                        <li><a href="courses.html?category=drawing">Drawing</a></li>
+                        <li><a href="courses.html?category=art">Art</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Load the selected course information
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedCourse = JSON.parse(localStorage.getItem('selectedCourse'));
+            
+            if (selectedCourse) {
+                document.querySelector('.checkout-course-title').textContent = selectedCourse.title;
+                document.querySelector('.checkout-course-price').textContent = selectedCourse.price;
+            }
+            
+            // Payment method selection
+            const paymentOptions = document.querySelectorAll('.payment-method-option');
+            const paymentDetails = document.querySelectorAll('.payment-details');
+            
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    paymentOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                    
+                    // Show the corresponding payment details
+                    const methodId = this.dataset.method;
+                    
+                    paymentDetails.forEach(detail => {
+                        if (detail.dataset.method === methodId) {
+                            detail.classList.add('active');
+                        } else {
+                            detail.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Complete Purchase Button
+            const completePaymentBtn = document.querySelector('.complete-payment-btn');
+            
+            completePaymentBtn.addEventListener('click', function() {
+                // In a real application, you would verify the payment here
+                // For this demo, we'll just simulate a successful payment
+                
+                // Store purchased course in local storage
+                const purchasedCourses = JSON.parse(localStorage.getItem('purchasedCourses')) || [];
+                purchasedCourses.push(selectedCourse);
+                localStorage.setItem('purchasedCourses', JSON.stringify(purchasedCourses));
+                
+                // Show success notification
+                alert('Payment successful! You now have access to the course.');
+                
+                // Redirect to the my courses page
+                window.location.href = 'my-courses.html';
+            });
+        });
+    </script>
+</body>
+</html> 

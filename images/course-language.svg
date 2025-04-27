@@ -1,0 +1,23 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#3B82F6"/>
+  
+  <!-- Speech Bubbles -->
+  <ellipse cx="140" cy="120" rx="100" ry="60" fill="#FFFFFF" opacity="0.9"/>
+  <ellipse cx="260" cy="180" rx="100" ry="60" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Text Lines -->
+  <rect x="80" y="110" width="60" height="6" rx="3" ry="3" fill="#3B82F6"/>
+  <rect x="80" y="125" width="100" height="6" rx="3" ry="3" fill="#3B82F6"/>
+  <rect x="80" y="140" width="80" height="6" rx="3" ry="3" fill="#3B82F6"/>
+  
+  <rect x="200" y="170" width="70" height="6" rx="3" ry="3" fill="#3B82F6"/>
+  <rect x="200" y="185" width="110" height="6" rx="3" ry="3" fill="#3B82F6"/>
+  <rect x="200" y="200" width="90" height="6" rx="3" ry="3" fill="#3B82F6"/>
+  
+  <!-- Globe Element -->
+  <circle cx="340" cy="70" r="35" fill="#FFFFFF" opacity="0.6"/>
+  <ellipse cx="340" cy="70" rx="35" ry="20" fill="none" stroke="#3B82F6" stroke-width="2"/>
+  <line x1="305" y1="70" x2="375" y2="70" stroke="#3B82F6" stroke-width="2"/>
+  <line x1="340" y1="35" x2="340" y2="105" stroke="#3B82F6" stroke-width="2"/>
+</svg> 
